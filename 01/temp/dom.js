@@ -5,6 +5,9 @@
 
 //es6+ 부터 함수는 화살표 함수로만들기
 const show = () => {
+//폼 숨기기
+const formSection = document.querySelector(`#formSection`)
+formSection.style.display = "none";
     //1. 태그만들기
     let tag = "";
     //for(let i = 1; i <= 6; i++){
@@ -24,8 +27,12 @@ const show = () => {
     //3 선택된 요소의 HTML 변경
     msgDiv.innerHTML = tag
     //3-1 동적으로 생성된 html 스타일변경
+    let msgimg = document.querySelector(`#msgimg`)
     msgDiv.style.backgroundColor = "red";
     msgDiv.style.maxwidth = "100px";
     msgDiv.style.maxheight = "100px";
  //   console.log(msgDiv.getComputedStyle());
 }
+
+//돔생성
+//document.addEventListener("DOMContentLoaded")
