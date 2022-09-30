@@ -1,61 +1,58 @@
-//주사위
+// 랜덤수
+let randNum;
+// 사용자가 선택한 수
+let userNum;
+
+//화면 보기 함수
+//매개변수
+const dispDom = (msgP, inNumP, bt1P, bt2P) => {
+  // DOM 제어
+  document.getElementById("msg").style.display = msgP;
+  document.getElementById("inNum").style.display = inNumP;
+  document.getElementById("bt1").style.display = bt1P;
+  document.getElementById("bt2").style.display = bt2P;
+}
+
+// 주사위
 //function showDice() {}
 const showDice = () => {
-    console.log("주사위");
-}
-//DOM제어
-document.getElementById("msg").style.display = "none";
-document.getElementById("inNum").style.display = "block";
-document.getElementById("bt1").style.display = "none";
-document.getElementById("bt2").style.display = "block";
-//랜덤수
-let random
+  // 랜덤수 생성
+  randNum = Math.floor(Math.random() * 6) + 1;
+  console.log(`주사위 랜덤수 => ${randNum}`);
 
-//사용자가 선택한수
-let userNum
+  // DOM 제어
+  // 값
+  dispDom("none", "block", "none", "block");
 
-//화면보기 함수
-const dispDom = (msgP, inNumP, bt1P, bt2P) => {
-document.getElementById("msg").style.display = msgP;
-document.getElementById("inNum").style.display = inNumP;
-document.getElementById("bt1").style.display = bt1P;
-document.getElementById("bt2").style.display = bt2P;
 }
 
-
-//랜덤수생성
-let i = Math.floor(Math.random()*6) + 1;
-console.log(`주사위 랜덤수 => ${i}`)
-
-
-
-//확인
+// 확인
 const showOk = () => {
-    userNum = form1.num.value;
-}
-//DOM제어
-document.getElementById("msg").style.display = "block";
-document.getElementById("inNum").style.display = "none";
-document.getElementById("bt1").style.display = "block";
-document.getElementById("bt2").style.display = "none";
-// 주사위 그림
-let tag = `<img src="./image/${random}.png">`;
-document.getElementById("msg").innerHTML
-// ox 그림
-if(random == userNum){
-    tag = `${tag}<img src="./image/o.png">`;
-}
-else{
-    tag = `${tag}<img src="./image/x.png">`;
-}
-document.getElementById("bt2").innerHTML
+  userNum = form1.num.value;
 
-//DOM 생성이 되고 난 후에 요소를CRUD해야함
+  //DOM 제어 
+  dispDom("block", "none", "block", "none");
+
+  // 주사위 그림
+  let tag = `<img src="./image/${randNum}.png">`;
+
+  // ox 그림
+  let ox;
+  if (randNum == userNum) ox = "o";
+  else ox = "x";
+
+  tag = `${tag}<img src="./image/${ox}.png">`;
+
+  // 이미지 표시
+  document.getElementById("msg").innerHTML = tag;
+  console.log(`사용자가 선택한 수 => ${userNum}`);
+}
+
+
+
+
+// DOM이 생성이 되고 난 후에 요소를 CRUD 해야한다.
 document.addEventListener("DOMContentLoaded", () => {
-    //주사위버튼만보이게
-    document.getElementById("msg").style.display = "none";
-    document.getElementById("inNum").style.display = "nene";
-    document.getElementById("bt1").style.display = "none";
-    document.getElementById("bt2").style.display = "none";
-
+  // 주사위 버튼만 보여야 함.
+  dispDom("none", "none", "block", "none");
 });
